@@ -1,3 +1,6 @@
+// for food section
+
+
 document.querySelector("#headingOne button").addEventListener("click", function () {
     document.querySelector("#foodImg1").src = "./imgs/food1.jpg"
 })
@@ -33,7 +36,7 @@ window.onload = function () {
             bottom: e.offsetTop + e.offsetHeight
         };
     });
-    console.log(sections);
+    console.log(offset);
 
     let scrollSpy = () => {
         // scrollTop 是元素頂端和能被看見的最頂端之間的距離. 當元素並未產生滾動條, 那麼 scrollTop 的值預設為 0
@@ -83,17 +86,18 @@ window.onload = function () {
 
 };
 
-const offset = document.querySelector('#lokiMenu').offsetHeight;
+// 讓navbar的超連結有offset的功能
+// const offset = document.querySelector('#lokiMenu').offsetHeight;
 
 // scroll to id  => idea by https://gist.github.com/andjosh/6764939
-document.querySelectorAll("#lokiMenu a,footer a").forEach(e => {
-    e.onclick = function (event) {
-        event.preventDefault();
-        const targetID = e.getAttribute("href");
+// document.querySelectorAll("#lokiMenu a,footer a").forEach(e => {
+//     e.onclick = function (event) {
+//         event.preventDefault();
+//         const targetID = e.getAttribute("href");
 
-        scrollToId(document.querySelector(targetID).offsetTop - offset + 1, 1500);
-    };
-});
+//         scrollToId(document.querySelector(targetID).offsetTop - offset + 1, 1500);
+//     };
+// });
 
 function scrollToId(toY, duration) {
     const
@@ -120,5 +124,5 @@ function scrollToId(toY, duration) {
         startNode.scrollTop = val;
         if (currentTime < duration) requestAnimationFrame(animateScroll); //frame pre 60/s
     };
-    animateScroll();
+    // animateScroll();
 }

@@ -154,11 +154,11 @@ header a:after{
 header a.active:after{
   width: 100%;
 }
-
+/* 
 :root{
-  /* scroll-behavior: auto 為點向上時是一次到定位。smooth是滑上去。因要用javascript 控制。故改回預設的auto */
+  scroll-behavior: auto 為點向上時是一次到定位。smooth是滑上去。因要用javascript 控制。故改回預設的auto 
   scroll-behavior: auto;
-}
+} */
 
 /* 首頁一開始，沒有lokiArrow。離開才有 */
 #lokiArrow{
@@ -173,3 +173,14 @@ header a.active:after{
 #lokiMenu{
   transition:1s ease;
 }
+
+/* ---------------------- */
+html{
+  scroll-behavior: smooth;
+  scroll-padding-top: 68px;
+}
+
+/* section:target{
+  border: 3px dotted red;
+  z-index: 99999;
+} */
