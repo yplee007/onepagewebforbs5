@@ -1,0 +1,456 @@
+0~57:00  網頁的起手式。  引入 bootstrap ; google font 。
+
+
+用FontIcon: 製作favicon.ico
+https://gauger.io/fonticon/
+
+1:08 後 font awesome
+
+貼 font awesome key
+每個人需用其各自的。 故幫別人做網站，他也需自行準備一個。
+
+1: 17: 52  至此 完成準備工作
+===========================
+接下為 大輪播
+
+貼入後要改完link，圖片撐開後。才會看的到滿版
+
+1:48;00
+
+===========
+以下為rwd
+1. 圖片改
+2. 文字置中(start from 2:06:55) 用flexbox做文字置中。 文字放大加shadow.
+2:14:29
+================
+休息到 2:40:35
+==================
+改二邊箭號icone 到 2:44:43
+幫箭號加陰影 :  註; 效果出不來，此不做
+
+==============
+2:48:47 改indicator。點 indicator 。看它的CSS是在那。覆寫它。加hight 30px, border radius: 50%, border: 2px solid transparent 撐開距離。
+到 3:00:00
+==========
+3:03:53 為 footer 。為去body 上方。自行key in 一個 footer
+  文字全貼入。  copyright的符號為 &copy;
+  加class  bg-dark text-muted text-center  (文字muter 才不會太顯眼)
+   文字 tag 改small
+    加 br 斷行 
+    加 span 於絡奇數位設計。好改文字顏色
+    因文字很靠上下邊 加 py-3
+
+3:13:00  加一固定於右下角的按鈕 
+  按鈕 直接用alink來做 。跳回 首頁
+       href: 直接跳回 輪播的id
+      加 class  btn   加 btn-info(藍色) 加 position-fixed
+        註 可裝scss everywhere 來提示
+      加 css
+        footer>a.poistion-fixed   right btm 都推5vh. 註不要用固定的px. 否則縮至mobile 時會距離太大
+     改 按鈕文字成 fontawesome icon  <i class="fas fa-angle-double-up fa-2x">
+		
+到 03:21:48結束
+     讓它會動
+
+    一般就是看到喜歡的就收集起來。要用時貼上。
+    去 a.poistion-fixed 內 貼 animation: bounce 2s ease infinite;
+    再貼 keyfram...
+=======================================,.,.
+     @keyframes bounce {
+		碼 略
+===;----------------------
+至 03:23:15 
+	因跳來跳去的。會按錯。故加z-index: 999; 。讓它浮起。
+
+========================
+以下開始 nav and tab  新section 第二section xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+=========================
+03:34:24   
+ 創一個<section id="lokiroom"> 包住以下的 bootstrap 碼?
+ copy bootstrap /Docs/Components/Navs & tabs/ 右邊點 JavaScript behavior / 有二種。 選第二個，有 div 那一種
+
+ 因原稿有一個房型介紹的標題。而bootstrap 只有<nav> 及div.tab-content  二區。故自行增加 <header> 及<h2> 寫標題。
+
+  把上區的nav 內縮成 <nav class="nav nav-tabs" id="nav-tab" role="tablist">
+  把 div.tab-content 的div置換成article。使得語意完整。
+
+  把nav 及 article 內的項新增至所需的5組。把nav標籤文字換成所要的中文
+  
+  把nav 內的 data-bs-target="xxxx" 能對應到 div 內的 id="xxxxx"。id的命名。用小寫連接線的方式。以便和bootstrap一致。
+   把div內的... 改為 nav-homeA, nav-homeB,....
+  把nav 內的 aria-controls= "XXXX" 改成和 div 內的 id 能對應
+  把nav botton的每一個 id 和底下的article div aria-lableledby 能對應
+    
+  先測試看OK不OK
+
+
+註  可把輪播時間由default 5s改成2s    <!-- 大輪播 -->
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">. 
+    加 data-bs-pause="false" mouse點到不會停。
+
+    修改前面按鈕 的 fixed 位置。由right=50px; bottom=50px; 改成 right=5vh; bottom=5vh;
+第一個檔案結束
+================================
+第二個檔案
+
+    1. 把<nav #lokiroom 加一個 .container 。可置中 。加py-5 把上面推開。
+        註: container css，如下。有margin left 及 right 設auto，故可置中
+            width: 100%;
+            padding-right: var(--bs-gutter-x, 0.75rem);
+            padding-left: var(--bs-gutter-x, 0.75rem);
+            margin-right: auto;
+            margin-left: auto;
+
+    2. head 內直接 加 text-center 讓文字水平置中
+    3. h2 加 text-info
+
+    4. 包住tab的 .nav是flexbox。可用此特性將底下撐開. 預設會換行。把它換成不換行
+        
+          .nav {
+              display: flex;
+              flex-wrap: wrap;
+              padding-left: 0;
+              margin-bottom: 0;
+              list-style: none;
+          }
+
+    故在<nav> 內 加 jsutify-content-around, flex-nowrap
+
+    5. (此行已失效)換頁籤bg 及字的顏色成淡藍白字  。在每一個 <a> 內 加  alert-info   text-whit 
+
+    6. 自行寫css 。使tab底色為 alert-info(淡藍 #cff4fc)
+       自行寫css 。使tab底色在acitve後為 bg-info(#0dcaf0)
+
+    8. 實際測試換成mobie　頁籤會擠在一起(space會消失)。故把每一個　#lokiroom .nav-itme 自行𧠃寫css 
+        加 flex: 0  1   14%  (註flex: 伸 縮 basis; 有5個頁籤。把basis 調成小於20% 。如 14%. shrink 1表空間不夠平均壓縮)
+
+到 027:42  處理邊框線及陰影
+    9. 目前tab外圍有灰色的boder。而底下無。改成只有border bottom有藍色
+    10. 試著找出tab底下的長橫線是定義在那個class 。答 nav-tabs
+        把 nav-tabs內的border 改顏色
+    11. 加上bootstrap 的 shadow  .  shadow-sm 於nav-links 後方
+
+  ------------------------------------------------------
+  39分後。開始做內容
+
+    1. 加py-5跟上面推開
+    2. 找bootstrap 的card 。有圖片，有body那一種。註 第一種即可
+    3. 把卡片，貼在第一個div 的內容。
+    4. 換img source。自行寫card-body內容 (參考網頁內容，直接貼)
+
+    5. 用rwd放3張卡片 .row>.col*3 . 先把卡片內的style="width: 18rem;" 刪除
+    6. 把卡片貼入上方。做成3個，並修改文字
+    7. 以下為loki 老師的喜好。把row 和上一行合併，但因d-flex會被吃掉。故
+      自行寫css。如下。
+        #lokiRoom > .tab-content > .row.active { (加row是因不要讓價目表不要吃到flex)
+         display: flex;
+        }
+    註，這裏先沒follow
+    1:06:20
+    --------------------
+    8. rwd 的觀念。應先調成手機使用。再放大，微調。
+    9. 調成手機時。應為一張卡片。所以改成  col-12. 因上下卡片會相連。故加mb-5; 背景太白。改成  body的background:#eee;
+    10. 放大一㸃。應可放二張卡片。加col-md-6
+    10. 再放大一㸃。應可放三張卡片。加col-lg-4
+    12. 上方介紹文字改灰色 text-muted. 水平置中 text-center, 垂直置中 mb-5;
+    ------------------
+    1:19:00  複製 做另外二頁
+    1:25:30 下課
+    --------------
+    1:49:38 做價目表。註 價目表不要flex
+    1. 覆製bootstrap 的content Tables 的直接選第一個copy
+    2. 找到第四組，在內容區。先建一div 。再把tables 貼入
+    3. 修改內容
+    4. 加text-center
+    1:59:33 
+    5. div 內把表格複製3份
+
+    ========================
+    2:09:31  notice
+    1. table 內。放<h3 text-right 文字靠右  。border-bottom 𤲿底線。border-info 上色
+    2. h5 飯站  加顏色
+    3. p mb-5 跟下推開
+    4. 老師直接貼完 
+    =========
+     for 房型介紹。在h2 內加 py-5 。讓它上方距相等
+============================
+===========================================================================
+     ==============
+     2:25:42 以下做服務設施
+     1. 原則上就是抄第個sectin的開頭。之後都是一個最外section 內 header 一個article
+     2. 加sectioin#lokifacility class 加 container py-5
+     2. 加 header
+     3. 加article class py-5
+        <section id="lokifacility" class="py-5">
+          <header class="textcenter">
+            <h2 class="text-info pb-5">設施介紹</h2>
+          </header>
+          <article class=" py-5">
+              ...
+          </article>
+        </section>
+      2:30:57
+      --------------------------------------
+      1. 各section 用不一樣的顏色才有區分感。
+      2. 加了container 會變窄版。拿掉才會變滿版。可在section 加 .bg-light 自行分出差別
+      3. 此處把container 從section 移到article。因後來背景圖要滿版。內容窄版
+      4. 我們的內容有 圖片 標題 內容 找。bootstrap 內 flex 下的media object     
+      5. 改的跟4不同了。自行做了
+      ===========
+      2:44:15 從完成了6個單項(左右排)向下排開始
+      1. 目標 : 小的時候 圖上文下。中: 圖左。文右 大 二項並排。圖一左 一右。
+      2. 每一個list 項目(圖+文)，都是一個col
+      3. 把間距調成相同  li 全加 .mb-4 (調成全部mb-4. 因理論上用程式要有規律)
+      4. 小時。要調圖上文下。要改在圖文的上一階。加flex-column
+      5. 因是圖上文下。故拿掉mr-3 。加pb-3推開下方文字
+      6. 用 <p 做下線 。 加 border-bottom border-info pb-3
+      ----------------------------
+      1. 當screen 中。 主軸變回。  加 flex-sm-row
+      2. img和文字要加 .col-sm-6
+      --------------------------
+      3:13:00 大版 
+      1.包img+文那一層 加 col-lg-6
+      2. 右邊那組圖文對調。用flexbox 的 order 來控制 (order-0 預設0，大在右); 偶數圖加 order-lg-1
+      3. 註一般是寫程式 從資料庫。產生上述的網站。要偶數才加。麻煩。故寫在css
+      4. 寫在css
+            偶數的li內的img。order要改
+           @media (min-width: 992px){
+             #lokifacility li:nth-of-type(even)>img{
+               order:1;
+             }
+           }
+      後續都背景圖。
+      檔案2 完。
+---------------------------------
+  第三個檔案:
+    1. 加背景圖。用fixed
+    2. 直接加css
+        #lokifacility{
+          background: rul(picsum 1920/1080);
+          background-position:center;
+          background-size:cover;
+          background-attachment:fixed; 定住
+        }
+        拿掉section 的 bg-ligt
+    註: 放二張背景圖，並加入融合效果。
+      
+        2. 直接加css
+        #lokifacility{
+          background: 
+          rul(picsum 1920/1080),
+          rgb(255,255,255,0.8) 0%,; 
+          background-blend-mode:color; (可至chrome try)
+          background-position:center;
+          background-size:cover;
+          background-attachment:fixed; 定住
+        }
+        也可至https://cssgradient.io/得圖
+      
+     服務設施 section: 結束於第三個檔案 0:32:30
+     ====================================================
+     以下為自行做的服務設施
+     1. 基礎框架同前。參考上
+
+     2. 用bootstrap 的 flex 的media object 為基礎。完成6個橫向的object
+          <div class="d-flex">
+              <div class="flex-shrink-0">  註: shrink 預設1，表空間不夠。大家等比例壓縮。 =0表示。不壓縮(可能會爆掉)
+                  <img src="..." alt="...">
+              </div>                   註 ms-3 表margin start: 3 . (margin 4點順序 上 右 下 左)
+              <div class="flex-grow-1 ms-3"> 註: grow 預設0，表有多的空間。依照設0份比例分配剩餘空間。=1，表示分多的空間一份
+                  This is some content from a media component. You can replace this with any content and adjust it as needed.
+          </div>
+</div>
+
+     3.  思考 用ul>li 控 外層。 li 間 用mb-4 控space
+         前面單項放入 ul>li*6 內。註: UL 相當於row的角色。li相當於col 。故可控制畫面要出幾組
+         用 ul.col-12 控制窄版只出1個。用內部的(上方)控制成上下
+         用 ul.col-12 控制平版出1個。用內部的(上方)控制成左右
+         用 ul.col-xl-6  控制桌機出2個。用內部的(上方)控制成左右。用order 控圖文
+
+         因先個小的。故先把內部改成上下。
+         放入ul>li
+
+      4. 改內部成上下: 
+          把內層div 加 flex-column align-items-center. 
+          把圖和文字推開。 img 內 加 .pb-3
+
+      5. 放入ul>li內
+    =====================================
+          預設是窄版
+         ul 加 .row .list-unstyled (拿掉點點)
+         li 加 .col-12 .mb-4(推開每個項目); 實測只有li 加.col-12 不夠。img上方的div也要加.col-12
+      ---------------------
+      改螢幕比sm 大時，圖文併排
+      1. li 加 .flex-sm-row (改回)
+      2. img 及 文字 上的div 都加 .col-sm-6 及 px-3
+      3. img 內加 .w-100 。讓img size 隨上方的div 大小變動
+      ----------------------
+       改 螢幕比lg 大時
+       1. li 加 col-lg-6
+       2. 加 css 將偶數項目，圖文對調
+       @media (min-width: 992px){
+          #lokifacility li:nth-of-type(even) div div:first-child{
+            order:1;
+          }
+        }
+       3. 直接於lokifacility 加背景圖。改fixed
+       #lokifacility {
+          background:url(../imgs/bgfac.jpg),
+          radial-gradient(circle, #777 30%, #ccc 70%), 
+          linear-gradient(to right, #999, #444 90%);
+          background-blend-mode: multiply, screen;
+          background-position: center;
+          background-size: cover;
+          background-attachment: fixed;
+        }
+end of section facility
+=========================================================
+section   第三個檔案 0:32:30 開始
+  accordion + list group的混合體
+  1. copy 完成前面的框架
+       <section id="lokifood" class="py-5">
+          <header class="text-center">
+              <h2 class="text-info pb-5">餐飲美食</h2>
+          </header>
+          <article class=" py-5">
+                ...
+          </article>
+      </section>
+    完成38:29
+    去bootstrap 拿 accordion。在component / collapse / accordion example #
+    ----------------------------
+  2. 約44:00 手風琴做大幅簡化，修改的工作
+      老師簡化成
+      <div class="accordion" id="foodmenu">
+
+        <div class="card">
+          <a class="card-header" data-toggle="collapse" data-target=#msg1">Item #1</a>
+          
+          <div id="msg1" class="collapse show" data-parent="#foodmenu">
+              <div class="card-body">AAA</div>
+          </div>
+        </div>
+
+        第二組。.....
+      </div>
+      所以老師的是      accordion   > card              >  a          +   (div > div)
+       bootstrap 5 是  accordion    > accordion-item    >  h2>button  +   (div > div)
+
+  3. 做出三組. 由54:00 開始
+  4. 加顏色 a的class 加 text-decoration-none alert-info
+  5.  加文字
+  -------------------------------------------
+  List group 。由 bootstrap / component /list group /javascript behavior 下的
+   1. 簡化
+   2. 
+   end 1:03:53
+   原理:  只要有 <a  它後面有   , data-toggle="list",  herf="#另外一邊的id"   
+          點擊超連結後。會顯示下方同id的tab-pane
+
+    3. 把 a 的 herf改為 #food1。… 下方的div 也改成相對應的
+    4. 把下方的div 標簽改為img
+  end of 1:12:17
+   ------------------------------------------------------
+   搬動實驗 
+   1. 把手風𤧂搬到list group 的 col-4內。
+   ---------------------------------------
+   1:23:50 開始 
+  1. 把 list group 的<a>內的data-toggle="list" href="#food1" 貼到col-4內手風琴的". card 後" (BS5是class="accordion-item") 後面。
+  2. (後來證實是不需要的)-------------------把 a的.list-group-item貼到手風𤧂的 div.card 後方。
+  3. 把 a. 父層div 的 .list-group 貼到手風𤧂 父層 div.caccordion 後方
+  4. 填字  
+  第三個檔案完
+  ------------------
+  第四個檔案
+  1. 圖片太硬。加.img-thumbnail (加1px border appearance); 加.shadow
+  
+  ----------------------------
+自已做
+  純用accordion。用javascript 做image. 超簡單。又快
+  
+
+  ========================================
+  第四個檔案0:20:00 開始。
+
+  做交通資訊 :lokitrans  做寬版
+
+1. 找到訓練中心。分享/嵌入地圖/選大  複製HTML
+2. 為了將上述地圖做滿版。去bootstrap / helper/ratio copy 第一個，把 iframe包起來。
+3. ratio 從16:9改1:1 。
+
+0:48:50 加css  
+
+
+  -----------------------------------------
+    第四個檔案1:05:13 navbar
+    找bootstrap / components / navbar / nav 找第二課。代碼較少那一個
+    1. 直接貼到<body> 開頭的下方，外面用header包起來。
+    2. 把nav 後面的class 的改成navbar-dark bg-dark。再加container
+    3. 把<nav 的 bg-dark 移到header。header 加fixed-top
+    2. 填入文字
+    5. ul 的上一層 + d-lg-flex justify-content-lg-end。把link推右
+    3. class="navbar-nav 後面加 ml-auto 。把navbar-nav推到右邊
+    6. 把每個超連結指向每個section的id
+  第四個檔案結束
+    =====================================
+    0:04:13 貼第一個icon
+    第5個檔案
+    1. 自行加入。
+    2. icon 和文字靠太近。加mr-2(註，實測無效)
+    3. 同上。直接把文字前多打二個space (有效)
+    ======================
+    011:48 
+    section 聯絡我們
+    1. 小的時候，佔col-12
+    2. 要背景色。加窄版
+    3. copy 餐飲美食的頭~ <article 頭 
+    4. 改字 + </article>
+    5. <section + bg-dark 。container 移到<article
+    0:23:26 從看bootstrap form開始。找input-group第二個。有後綴字的
+    6. copy至form內
+    7. 後面的男女性別。bootstrap5用 input-group-text。讓它加在後方
+    8. input 後有id (for label對)。有name(資料欄位名稱)。男性，女性的name設相同。才可二選一。
+    9. 02:43:25 上面的form做完後，其其下，建一個<article> 
+    ===================
+    02:57:30 加上javascript
+    03:02:27  直接貼code  scroll to id
+
+    名詞
+
+----------------------------
+    註解:
+
+    1。模版字符串: 反引號 ` 。可少掉寫 + 
+    2. 在模版字符串中嵌入變數 ${...}
+例: 
+let content = `Hello, my name is ${myName}, my lucky number is ${2*(numA + numB)}`;
+console.log(content);  // "Hello, my name is PJCHENder, my lucky number is 22"
+------------------------------------
+
+
+
+
+
+
+
+
+
+      
+
+
+
+
+
+
+  
+    
+    
+
+
+
+
+
+問題 : 輪播的文字置中，覺得用 xxxx 較好。
+      tab的background 設成alert-info，試不出來
+
+

@@ -1,0 +1,175 @@
+body {
+    font-family: "Roboto", "Arial", "Noto Sans TC", "Microsoft JhengHei", "sans-serif";
+    background: #eee;
+}
+
+#carouselExampleCaptions img {
+    object-fit: cover;
+}
+
+#carouselExampleCaptions h5 {
+    font-size: 40px;
+}
+
+#carouselExampleCaptions p {
+    font-size: 16px;
+}
+
+#carouselExampleCaptions .carousel-caption {
+    bottom:50%;
+    transform: translate(0, 50%);
+    text-shadow: 0.3rem 0.3rem 0.5rem #333; 
+}
+
+/* #carouselExampleCaptions .fas {
+    text-shadow: 2x 1px 2px #333; 
+} */
+
+#carouselExampleCaptions .carousel-indicators button {
+   width:15px; height: 15px;border-radius: 50%;
+   /* 用border 調間距，拉開較好按 */
+   border: 10px solid transparent;
+}
+/* ++++++++++++++Footer area */
+
+footer .position-fixed{
+    right:5vh; bottom:5vh;
+    z-index: 999;
+
+    animation: bounce 2s ease infinite;
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    53%,
+    80%,
+    100% {
+      animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+      transform: translate(0, 0);
+    }
+  
+    40%,
+    43% {
+      animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+      transform: translate(0, -30px);
+    }
+  
+    70% {
+      animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+      transform: translate(0, -15px);
+    }
+  
+    90% {
+      transform: translate(0, -4px);
+    }
+  }
+
+/* end of Footer========================================================== */
+
+/* @media (min-width: 768px) {
+.d-md-block {
+    display: block !important;
+  }
+} */
+
+/* 以下為 for 房屋介紹 */
+
+#lokiRoom .nav-link{
+  background-color:#cff4fc;
+  flex: 0 1 14%;
+  border: 0; border-bottom:1px solid #0dcaf0;
+
+}
+
+#lokiRoom>header .active{
+  background-color:#0dcaf0;
+}
+
+#lokiRoom>header .nav-tabs{
+  border-bottom:1px solid #0dcaf0;
+}
+
+/* end of  房屋介紹 */
+
+
+/* 以下for food  */
+#lokiFood button:not(collapsed){
+  background:#cff4fc;
+}
+
+#lokiFood small{
+  transform: rotate(-25deg) translate(-25%, -75%) !important;
+  z-index: 999;
+}
+
+
+/* 以下 for 設施介紹 */
+
+@media (min-width: 992px){
+  #lokifacility li:nth-of-type(even) div div:first-child{
+    order:1;
+  }
+}
+
+#lokifacility {
+  background:url(../imgs/bgfac.jpg),
+  radial-gradient(circle, #777 30%, #ccc 70%), 
+  linear-gradient(to right, #999, #444 90%);
+  background-blend-mode: multiply, screen;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  text-shadow: #333 0.3rem 0.3rem 0.5rem;
+}
+
+/* 以下for 交通資訊 */
+
+#lokitrans iframe{
+  filter:brightness(0.9);
+
+}
+
+/* end of 交通資訊 */
+
+/* header */
+
+.ttest{
+  border:10px sloid red;
+}
+/* end of header */
+
+/* for navbar 超連結下方有白線 */
+
+header a:after{
+  content: "";
+  display: block;
+  height: 2px;
+  width: 0%;
+  background: #fff;
+  margin: 5px 0;
+  transition: 1000ms ease;
+}
+header a.active:after{
+  width: 100%;
+}
+
+:root{
+  /* scroll-behavior: auto 為點向上時是一次到定位。smooth是滑上去。因要用javascript 控制。故改回預設的auto */
+  scroll-behavior: auto;
+}
+
+/* 首頁一開始，沒有lokiArrow。離開才有 */
+#lokiArrow{
+  opacity:0;
+  transition: 500ms ease;
+}
+
+#lokiArrow.shown{
+  opacity:1;
+}
+
+#lokiMenu{
+  transition:1s ease;
+}

@@ -1,0 +1,72 @@
+<!doctype html>
+<!-- 記得改語言 -->
+<html lang="zh-TW">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Bootstrap CSS 註: ./ 點斜表以網站的根目錄去找 -->
+	<link rel="stylesheet" href="./plugins/bootstrap.css">
+	<!-- custom.css 放Bootstrap後，來蓋掉bootstrap的效果。-->
+	<link rel="stylesheet" href="./plugins/custom.css">
+	<!-- 網頁頁籤上的 icon -->
+	<link rel="shortcut icon" href="./imgs/favicon.ico" type="image/x-icon">
+
+	<!-- Google Font Noto Sans TC + Robot  -->
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&family=Roboto&display=swap" rel="stylesheet">
+	<!-- Font Awesome  -->
+	<script src="https://kit.fontawesome.com/a9a2a05be5.js" crossorigin="anonymous"></script>
+
+
+	<title>泰山度假飯店 - 放鬆的快樂時光!</title>
+</head>
+
+<body>
+
+	<div class="row">
+		<div class="col-4">
+			<div class="list-group" id="list-tab" role="tablist">
+				<a class="list-group-item list-group-item-action active" id="list-home-list" data-bs-toggle="list"
+					href="#list-home" role="tab" aria-controls="list-home">Home</a>
+				<a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list"
+					href="#list-profile" role="tab" aria-controls="list-profile">Profile</a>
+				<a class="list-group-item list-group-item-action" id="list-messages-list" data-bs-toggle="list"
+					href="#list-messages" role="tab" aria-controls="list-messages">Messages</a>
+				<a class="list-group-item list-group-item-action" id="list-settings-list" data-bs-toggle="list"
+					href="#list-settings" role="tab" aria-controls="list-settings">Settings</a>
+			</div>
+		</div>
+
+		<div class="col-8">
+			<div class="tab-content" id="nav-tabContent">
+				<div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+					<img src="./imgs/food1.jpg" alt="">
+				</div>
+				<div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+					<img src="./imgs/food2.jpg" alt="">
+				</div>
+				<div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
+					<img src="./imgs/food3.jpg" alt="">
+				</div>
+				<div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
+					<img src="./imgs/food4.jpg" alt="">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- accordion -->
+
+	<!-- end of accordion -->
+
+
+
+	<!-- Option 1: Bootstrap Bundle with Popper -->
+	<script src="./plugins/bootstrap.bundle.js"></script>
+
+</body>
+
+</html>
